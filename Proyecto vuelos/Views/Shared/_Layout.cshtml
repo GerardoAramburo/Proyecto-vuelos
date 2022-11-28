@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,7 +76,7 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> Nombre <b class="caret"></b>
+                        <i class="fa fa-user fa-fw"></i> @Session["nombre"] <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
@@ -87,7 +87,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesion</a>
+                            <a href="/Logout"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesion</a>
                         </li>
                     </ul>
                 </li>
@@ -166,5 +166,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="~/Content/js/startmin.js"></script>
 
+    <script src="~/Content/js/scripts.js"></script>
 </body>
 </html>
