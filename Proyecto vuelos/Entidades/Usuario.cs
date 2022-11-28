@@ -93,5 +93,40 @@ namespace Proyecto_vuelos.Entidades
             }
             return null;
         }
+
+                public static bool existe(string correo)
+        {
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    string query = "SELECT idusuario FROM usuarios WHERE correo=@correo;";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
+                    cmd.Parameters.AddWithValue("@correo", correo);
+
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.Read())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        dataReader.Close();
+                        conexion.CloseConnection();
+                        return false;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return false;
+        }
+
     }
 }

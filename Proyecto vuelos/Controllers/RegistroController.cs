@@ -27,14 +27,21 @@ namespace Proyecto_vuelos.Controllers
                     u.Nombre = nombre;
                     u.Contra = contra;
 
-                    if (Usuario.Guardar(u))
+                    if (!Usuario.existe(correo))
                     {
-                        Response.Write("Guardado correctamente");
-                        return RedirectToAction("Index", "Login");
-                    }
-                    else //En caso de que haya error al guardar
+                        if (Usuario.Guardar(u))
+                        {
+                            Response.Write("Guardado correctamente");
+                            return RedirectToAction("Index", "Login");
+                        }
+                        else //En caso de que haya error al guardar
+                        {
+                            Response.Write("<script>document.onload=alert('Error al guardar!')</script>");
+                        }
+                    } else
                     {
-                        Response.Write("<script>document.onload=alert('Error al guardar!')</script>");
+                        Response.Write("<script>document.onload=alert('Ya hay un usuario registrado con ese correo!')</script>");
+
                     }
                 }
                 else //En caso de que haya un campo vacio
