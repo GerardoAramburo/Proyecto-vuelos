@@ -206,6 +206,8 @@
     <Content Include="Content\js\metisMenu.min.js" />
     <Content Include="Content\js\morris-data.js" />
     <Content Include="Content\js\morris.min.js" />
+    <Content Include="Content\js\proyectoVuelos\avion.js" />
+    <Content Include="Content\js\proyectoVuelos\sweetalert2.js" />
     <Content Include="Content\js\raphael.min.js" />
     <Content Include="Content\js\scripts.js" />
     <Content Include="Content\js\startmin.js" />

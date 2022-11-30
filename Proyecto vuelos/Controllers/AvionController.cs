@@ -16,14 +16,21 @@ namespace Proyecto_vuelos.Controllers
             return View(aviones);
         }
 
-        public ActionResult Registro()
+        public ActionResult Registro(int id)
         {
-            return View();
+            Avion avion = Avion.GetById(id);
+            return View(avion);
         }
 
-        public ActionResult Guardar(string nombre, string placa)
+        public ActionResult Guardar(int id, string nombre, string placa)
         {
-            Avion.Guardar(nombre, placa);
+            Avion.Guardar(id, nombre, placa);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Eliminar(int id)
+        {
+            Avion.Eliminar(id);
             return RedirectToAction("Index");
         }
 
