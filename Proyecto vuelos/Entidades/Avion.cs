@@ -46,5 +46,33 @@ namespace Proyecto_vuelos.Entidades
             }
             return aviones;
         }
+
+        public static bool Guardar(string placa, string nombre)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.connection.CreateCommand();
+
+                        cmd.CommandText = "INSERT INTO avion (placa, nombre) VALUES (@placa, @nombre);";
+
+                        cmd.Parameters.AddWithValue("@placa", placa);
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+
+
+                    result = cmd.ExecuteNonQuery() == 1;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
     }
 }

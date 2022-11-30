@@ -15,5 +15,17 @@ namespace Proyecto_vuelos.Controllers
             List<Avion> aviones = Avion.GetAll();
             return View(aviones);
         }
+
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
+        public ActionResult Guardar(string nombre, string placa)
+        {
+            Avion.Guardar(nombre, placa);
+            return RedirectToAction("Index");
+        }
+
     }
 }

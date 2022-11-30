@@ -244,6 +244,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Registro\Index.cshtml" />
     <Content Include="Views\Avion\Index.cshtml" />
+    <Content Include="Views\Avion\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
