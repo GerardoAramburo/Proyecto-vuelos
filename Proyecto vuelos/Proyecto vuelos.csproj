@@ -160,9 +160,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\VueloController.cs" />
     <Compile Include="Entidades\Pasajero.cs" />
     <Compile Include="Entidades\Avion.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Entidades\Vuelo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +253,8 @@
     <Content Include="Views\Avion\Registro.cshtml" />
     <Content Include="Views\Pasajero\Index.cshtml" />
     <Content Include="Views\Pasajero\Registro.cshtml" />
+    <Content Include="Views\Vuelo\Index.cshtml" />
+    <Content Include="Views\Vuelo\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
