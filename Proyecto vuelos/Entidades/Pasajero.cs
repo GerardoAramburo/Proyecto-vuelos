@@ -101,17 +101,17 @@ namespace Proyecto_vuelos.Entidades
                     {
                         cmd.CommandText = "INSERT INTO pasajero (nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento) VALUES (@nombre, @apellidoPaterno, @apellidoMaterno, @fechaNacimiento);";
 
-                        cmd.Parameters.AddWithValue("@nonbre", nombre);
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@apellidoPaterno", apellidoPaterno);
                         cmd.Parameters.AddWithValue("@apellidoMaterno", apellidoMaterno);
                         cmd.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
                     }
                     else
                     {
-                        cmd.CommandText = "UPDATE pasajero SET nombre = @nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento = @nombre WHERE id = @id;";
+                        cmd.CommandText = "UPDATE pasajero SET nombre = @nombre, apellidoPaterno = @apellidoPaterno, apellidoMaterno = @apellidoMaterno, fechaNacimiento = @fechaNacimiento WHERE id = @id;";
 
                         cmd.Parameters.AddWithValue("@id", id);
-                        cmd.Parameters.AddWithValue("@nonbre", nombre);
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@apellidoPaterno", apellidoPaterno);
                         cmd.Parameters.AddWithValue("@apellidoMaterno", apellidoMaterno);
                         cmd.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);

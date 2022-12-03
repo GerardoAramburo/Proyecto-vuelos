@@ -22,9 +22,9 @@ namespace Proyecto_vuelos.Controllers
             return View(avion);
         }
 
-        public ActionResult Guardar(int id, string nombre, string placa)
+        public ActionResult Guardar(int id, string placa, string nombre)
         {
-            Avion.Guardar(id, nombre, placa);
+            Avion.Guardar(id, placa, nombre);
             return RedirectToAction("Index");
         }
 

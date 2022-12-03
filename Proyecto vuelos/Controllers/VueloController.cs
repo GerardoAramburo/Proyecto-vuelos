@@ -22,9 +22,9 @@ namespace Proyecto_vuelos.Controllers
             return View(vuelo);
         }
 
-        public ActionResult Guardar(int id, string origen, string destino, Avion Avion, string capacidad, DateTime fecha)
+        public ActionResult Guardar(int id, string origen, string destino, int idAvion, string capacidad, string fecha)
         {
-            Vuelo.Guardar(id, origen, destino, Avion, capacidad, fecha);
+            Vuelo.Guardar(id, origen, destino, idAvion, capacidad, DateTime.Parse(fecha));
             return RedirectToAction("Index");
         }
 
