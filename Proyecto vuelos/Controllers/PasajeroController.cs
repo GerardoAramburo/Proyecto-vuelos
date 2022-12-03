@@ -24,13 +24,13 @@ namespace Proyecto_vuelos.Controllers
 
         public ActionResult Guardar(int id, string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento)
         {
-            Pasajero.Guardar(id, nombre, apellidoPaterno, apellidoMaterno,  fechaNacimiento);
+            Pasajero.Guardar(id, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
             return RedirectToAction("Index");
         }
 
         public ActionResult Eliminar(int id)
         {
-            Avion.Eliminar(id);
+            Pasajero.Eliminar(id);
             return RedirectToAction("Index");
         }
 

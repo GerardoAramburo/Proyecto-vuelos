@@ -13,7 +13,6 @@ namespace Proyecto_vuelos.Entidades
         public int Id { get; set; }
         public string Origen { get; set; }
         public string Destino { get; set; }
-
         public Avion Avion { get; set; }
         public string Capacidad { get; set; }
         public DateTime Fecha { get; set; }
@@ -40,10 +39,14 @@ namespace Proyecto_vuelos.Entidades
                         vuelo.Id = int.Parse(dataReader["id"].ToString());
                         vuelo.Origen = dataReader["origen"].ToString();
                         vuelo.Destino = dataReader["destino"].ToString();
-                        Avion avion = new Avion();
-                        avion.Id = int.Parse(dataReader["idAvion"].ToString());
                         vuelo.Capacidad = (dataReader["capacidad"].ToString());
                         vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
+
+                        Avion avion = new Avion();
+
+                        avion.Id = int.Parse(dataReader["idAvion"].ToString());
+                        avion.Nombre = dataReader["nombreAvion"].ToString();
+                        avion.Placa = dataReader["placaAvion"].ToString();
 
                         vuelo.Avion = avion;
 
@@ -82,10 +85,14 @@ namespace Proyecto_vuelos.Entidades
                         vuelo.Id = int.Parse(dataReader["id"].ToString());
                         vuelo.Origen = dataReader["origen"].ToString();
                         vuelo.Destino = dataReader["destino"].ToString();
-                        Avion avion = new Avion();
-                        avion.Id = int.Parse(dataReader["idAvion"].ToString());
                         vuelo.Capacidad = (dataReader["capacidad"].ToString());
                         vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
+
+                        Avion avion = new Avion();
+
+                        avion.Id = int.Parse(dataReader["idAvion"].ToString());
+                        avion.Nombre = dataReader["nombreAvion"].ToString();
+                        avion.Placa = dataReader["placaAvion"].ToString();
 
                         vuelo.Avion = avion;
 
@@ -102,7 +109,7 @@ namespace Proyecto_vuelos.Entidades
             return vuelos;
         }
 
-        public static bool Guardar(int id, string origen, string destino, Avion Avion, string capacidad, DateTime fecha)
+        public static bool Guardar(int id, string origen, string destino, int idAvion, string capacidad, DateTime fecha)
         {
             bool result = false;
             try
@@ -118,9 +125,9 @@ namespace Proyecto_vuelos.Entidades
 
                         cmd.Parameters.AddWithValue("@origen", origen);
                         cmd.Parameters.AddWithValue("@destino", destino);
-                        cmd.Parameters.AddWithValue("@idAvion", Avion);
+                        cmd.Parameters.AddWithValue("@idAvion", idAvion);
                         cmd.Parameters.AddWithValue("@capacidad", capacidad);
-                        cmd.Parameters.AddWithValue("@DateTime", fecha);
+                        cmd.Parameters.AddWithValue("@fecha", fecha);
 
                     }
                     else
@@ -130,9 +137,9 @@ namespace Proyecto_vuelos.Entidades
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.Parameters.AddWithValue("@origen", origen);
                         cmd.Parameters.AddWithValue("@destino", destino);
-                        cmd.Parameters.AddWithValue("@idAvion", Avion);
+                        cmd.Parameters.AddWithValue("@idAvion", idAvion);
                         cmd.Parameters.AddWithValue("@capacidad", capacidad);
-                        cmd.Parameters.AddWithValue("@DateTime", fecha);
+                        cmd.Parameters.AddWithValue("@fecha", fecha);
 
                     }
 
