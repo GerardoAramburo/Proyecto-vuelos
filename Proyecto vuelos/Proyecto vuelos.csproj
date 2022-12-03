@@ -155,12 +155,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Base de datos\Conexion.cs" />
+    <Compile Include="Controllers\BoletoController.cs" />
     <Compile Include="Controllers\PasajeroController.cs" />
     <Compile Include="Controllers\AvionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\VueloController.cs" />
+    <Compile Include="Entidades\Boleto.cs" />
     <Compile Include="Entidades\Pasajero.cs" />
     <Compile Include="Entidades\Avion.cs" />
     <Compile Include="Entidades\Usuario.cs" />
@@ -253,8 +255,11 @@
     <Content Include="Views\Avion\Registro.cshtml" />
     <Content Include="Views\Pasajero\Index.cshtml" />
     <Content Include="Views\Pasajero\Registro.cshtml" />
+    <Content Include="Views\Boleto\Registro.cshtml" />
+    <Content Include="Views\Boleto\Index.cshtml" />
     <Content Include="Views\Vuelo\Index.cshtml" />
     <Content Include="Views\Vuelo\Registro.cshtml" />
+    <Content Include="Views\Boleto\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

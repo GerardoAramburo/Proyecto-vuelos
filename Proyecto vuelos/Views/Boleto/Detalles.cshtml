@@ -1,0 +1,25 @@
+﻿@using Proyecto_vuelos.Entidades;
+@model Boleto
+
+@{ ViewBag.Title = "Boleto " + string.Concat(Model.Id.ToString(), "000");}
+
+<div class="col-lg-4">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <p>
+                Boleto @string.Concat(Model.Id.ToString(), "000")
+            </p>
+        </div>
+        <div class="panel-body">
+            <p>Fecha de compra: @Model.fecha_creacion</p>
+            <hr />
+            <h6 Detalles del vuelo></h6>
+            <p>Origen: @Model.Vuelo.Origen</p>
+            <p>Destino: @Model.Vuelo.Destino</p>
+            <p>Capacidad: @Model.Vuelo.Capacidad</p>
+            <p>Fecha del vuelo: @Model.Vuelo.Fecha</p>
+            <p>Avion: @Model.Vuelo.Avion.Nombre</p>
+        </div>
+
+    </div>
+</div>

@@ -15,7 +15,7 @@ namespace Proyecto_vuelos.Entidades
         public string Destino { get; set; }
 
         public Avion Avion { get; set; }
-        public string Capacidad { get; set; }
+        public int Capacidad { get; set; }
         public DateTime Fecha { get; set; }
 
         public static Vuelo GetById(int id)
@@ -42,7 +42,7 @@ namespace Proyecto_vuelos.Entidades
                         vuelo.Destino = dataReader["destino"].ToString();
                         Avion avion = new Avion();
                         avion.Id = int.Parse(dataReader["idAvion"].ToString());
-                        vuelo.Capacidad = (dataReader["capacidad"].ToString());
+                        vuelo.Capacidad = int.Parse(dataReader["capacidad"].ToString());
                         vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
 
                         vuelo.Avion = avion;
@@ -84,7 +84,7 @@ namespace Proyecto_vuelos.Entidades
                         vuelo.Destino = dataReader["destino"].ToString();
                         Avion avion = new Avion();
                         avion.Id = int.Parse(dataReader["idAvion"].ToString());
-                        vuelo.Capacidad = (dataReader["capacidad"].ToString());
+                        vuelo.Capacidad = int.Parse(dataReader["capacidad"].ToString());
                         vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
 
                         vuelo.Avion = avion;
