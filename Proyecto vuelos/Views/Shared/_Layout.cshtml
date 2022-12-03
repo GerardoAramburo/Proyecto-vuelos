@@ -27,6 +27,8 @@
     <!-- Custom Fonts -->
     <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    @RenderSection("css", false)
+
 </head>
 <body>
 
@@ -112,7 +114,13 @@
                             <a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","Avion")"><i class="fa fa-dashboard fa-fw"></i> Aviones</a>
+                            <a href="@Url.Action("Index","Avion")"><i class="fa fa-paper-plane fa-fw"></i> Aviones</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Pasajero")"><i class="fa fa-users fa-fw"></i> Pasajero</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Vuelo")"><i class="fa fa-plane fa-fw"></i> Vuelos</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Multinivel<span class="fa arrow"></span></a>
@@ -170,5 +178,8 @@
     <script src="~/Content/js/startmin.js"></script>
 
     <script src="~/Content/js/scripts.js"></script>
+
+    @RenderSection("js" , false)
+
 </body>
 </html>
