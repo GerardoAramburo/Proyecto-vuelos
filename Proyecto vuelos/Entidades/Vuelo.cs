@@ -39,13 +39,10 @@ namespace Proyecto_vuelos.Entidades
                         vuelo.Id = int.Parse(dataReader["id"].ToString());
                         vuelo.Origen = dataReader["origen"].ToString();
                         vuelo.Destino = dataReader["destino"].ToString();
-                        Avion avion = new Avion();
-                        avion.Id = int.Parse(dataReader["idAvion"].ToString());
-                        vuelo.Capacidad = (dataReader["capacidad"].ToString());
+                        vuelo.Capacidad = int.Parse(dataReader["capacidad"].ToString());
                         vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
 
                         Avion avion = new Avion();
-
                         avion.Id = int.Parse(dataReader["idAvion"].ToString());
                         avion.Nombre = dataReader["nombreAvion"].ToString();
                         avion.Placa = dataReader["placaAvion"].ToString();
@@ -87,13 +84,13 @@ namespace Proyecto_vuelos.Entidades
                         vuelo.Id = int.Parse(dataReader["id"].ToString());
                         vuelo.Origen = dataReader["origen"].ToString();
                         vuelo.Destino = dataReader["destino"].ToString();
-                        vuelo.Capacidad = (dataReader["capacidad"].ToString());
+                        vuelo.Capacidad = int.Parse(dataReader["capacidad"].ToString());
                         vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
 
                         Avion avion = new Avion();
 
                         avion.Id = int.Parse(dataReader["idAvion"].ToString());
-                        vuelo.Capacidad = (dataReader["capacidad"].ToString());
+                        vuelo.Capacidad = int.Parse(dataReader["capacidad"].ToString());
                         vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
 
                         vuelo.Avion = avion;
