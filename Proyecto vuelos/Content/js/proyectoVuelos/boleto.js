@@ -11,8 +11,8 @@
     }).then((result) => {
         if (result.isConfirmed) {
 
-            location.href = "/Avion/Eliminar/" + id;
-
+            location.href = "/Boleto/Eliminar/" + id;
+            console.log("Deleting..");
         }
     })
 }

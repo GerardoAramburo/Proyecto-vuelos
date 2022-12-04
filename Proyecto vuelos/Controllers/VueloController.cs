@@ -1,6 +1,7 @@
 ﻿using Proyecto_vuelos.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,8 +19,10 @@ namespace Proyecto_vuelos.Controllers
 
         public ActionResult Registro(int id)
         {
-            Vuelo vuelo = Vuelo.GetById(id);
-            return View(vuelo);
+            dynamic model = new ExpandoObject();
+            model.Vuelo = Vuelo.GetById(id);
+            model.aviones = Avion.GetAll();
+            return View(model);
         }
 
         public ActionResult Guardar(int id, string origen, string destino, int idAvion, string capacidad, string fecha)

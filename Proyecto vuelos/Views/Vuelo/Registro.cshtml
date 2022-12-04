@@ -1,5 +1,5 @@
 ﻿@using Proyecto_vuelos.Entidades
-@model Vuelo
+@model dynamic
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -10,29 +10,42 @@
 
                 <!--Formulario aquí-->
                 <form action="@Url.Action("Guardar","Vuelo")">
-                    <input type="hidden" class="form-control" name="id" value="@Model.Id">
+                    <input type="hidden" class="form-control" name="id" value="@Model.Vuelo.Id">
                     <div class="form-group">
                         <label>Origen:</label>
-                        <input class="form-control" name="origen" value="@if (Model.Id != 0) { @Model.Origen}" />
+                        <input class="form-control" name="origen" value="@if (Model.Vuelo.Id != 0) { @Model.Vuelo.Origen}" />
                     </div>
                     <div class="form-group">
                         <label>Destino:</label>
-                        <input class="form-control" name="destino" value="@if (Model.Id != 0) { @Model.Destino}" />
+                        <input class="form-control" name="destino" value="@if (Model.Vuelo.Id != 0) { @Model.Vuelo.Destino}" />
                     </div>
                     <div class="form-group">
-                        <label>idAvion:</label>
-                        <input class="form-control" name="idAvion" value="@if (Model.Id != 0) { @Model.Avion.Id}" />
+                        <label>Avion:</label>
+                        <select class="form-control" name="idAvion">
+                            @foreach (Avion a in Model.aviones)
+                            {
+                                if (Model.Vuelo.Id != 0 && Model.Vuelo.Avion.Id == a.Id)
+                                {
+                                    <option selected value="@a.Id">@a.Nombre</option>
+                                }
+                                else
+                                {
+                                    <option value="@a.Id">@a.Nombre</option>
+                                }
+
+                            }
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Capacidad:</label>
-                        <input class="form-control" name="capacidad" value="@if (Model.Id != 0) { @Model.Capacidad}" />
+                        <input class="form-control" name="capacidad" value="@if (Model.Vuelo.Id != 0) { @Model.Vuelo.Capacidad}" />
                     </div>
                     <div class="form-group">
                         <label>Fecha:</label>
-                        <input class="form-control" name="fecha" value="@if (Model.Id != 0) { @Model.Fecha}" />
+                        <input type="datetime-local" class="form-control" name="fecha" value="@if (Model.Vuelo.Id != 0) { @Model.Vuelo.Fecha.ToString("yyyy-MM-ddThh:mm")}"/>
                     </div>
-                    <button class="btn btn-success" type="submit">Guardar</button>
 
+                    <button class="btn btn-success" type="submit">Guardar</button>
                 </form>
             </div>
         </div>

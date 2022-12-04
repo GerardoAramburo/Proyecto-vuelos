@@ -36,30 +36,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Vuelo a in Model)
+                            @foreach (Vuelo v in Model)
                             {
                                 <tr>
                                     <th scope="row">
-                                        @a.Id
+                                        @v.Id
                                     </th>
                                     <td>
-                                        @a.Origen
+                                        @v.Origen
                                     </td>
                                     <td>
-                                        @a.Destino
+                                        @v.Destino
                                     </td>
                                     <td>
-                                        @a.Avion.Nombre
+                                        @v.Avion.Nombre
                                     </td>
                                     <td>
-                                        @a.Capacidad
+                                        @v.Capacidad
                                     </td>
                                     <td>
-                                        @a.Fecha
+                                        @v.Fecha
                                     </td>
                                     <td>
-                                        <a href="@Url.Action("Registro","Vuelo", new { id = a.Id})" class="btn btn-primary btn-circle"><i class="fa fa-pencil"></i></a>
-                                        <a onclick="eliminar(@a.Id)" class="btn btn-danger btn-circle"><i class="fa fa-trash-o"></i></a>
+                                        <a href="@Url.Action("Registro","Vuelo", new { id = v.Id})" class="btn btn-primary btn-circle"><i class="fa fa-pencil"></i></a>
+                                        <a onclick="eliminar(@v.Id)" class="btn btn-danger btn-circle"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             }

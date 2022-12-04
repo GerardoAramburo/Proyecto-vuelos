@@ -88,11 +88,9 @@ namespace Proyecto_vuelos.Entidades
                         vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
 
                         Avion avion = new Avion();
-
                         avion.Id = int.Parse(dataReader["idAvion"].ToString());
-                        vuelo.Capacidad = int.Parse(dataReader["capacidad"].ToString());
-                        vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
-
+                        avion.Nombre = dataReader["nombreAvion"].ToString();
+                        avion.Placa = dataReader["placaAvion"].ToString();
                         vuelo.Avion = avion;
 
                         vuelos.Add(vuelo);

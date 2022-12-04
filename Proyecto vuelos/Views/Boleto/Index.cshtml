@@ -1,18 +1,20 @@
 ﻿@using Proyecto_vuelos.Entidades;
 @model List<Boleto>
 
-<!-- DataTables CSS -->
-<link href="~/Content/css/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+@section css
+{
+    <!-- DataTables CSS -->
+    <link href="~/Content/css/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
-<!-- DataTables Responsive CSS -->
-<link href="~/Content/css/dataTables/dataTables.responsive.css" rel="stylesheet">
-
+    <!-- DataTables Responsive CSS -->
+    <link href="~/Content/css/dataTables/dataTables.responsive.css" rel="stylesheet">
+}
 
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Aviones
+                Boletos
             </div>
             <div class="panel-body">
                 <a href="@Url.Action("Registro","Boleto", new { id = 0})" class="btn btn-primary">Agregar nuevo</a>
@@ -53,7 +55,7 @@
                                         @b.Vuelo.Destino
                                     </td>
                                     <td>
-                                        <a onclick="eliminarBoleto(@b.Id)" class="btn btn-danger btn-circle"><i class="fa fa-trash-o"></i></a>
+                                        <a onclick="eliminar(@b.Id)" class="btn btn-danger btn-circle"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -66,5 +68,20 @@
     </div>
 </div>
 
-<script src="~/Content/js/proyectoVuelos/sweetalert2.js"></script>
-<script src="~/Content/js/proyectoVuelos/avion.js"></script>
+@section js
+{
+    <script>
+        $(document).ready(function () {
+            $('#tabla').DataTable();
+        });
+    </script>
+
+    <script src="~/Content/js/proyectoVuelos/boleto.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="~/Content/js/dataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/js/dataTables/dataTables.bootstrap.min.js"></script>
+
+    <!-- Sweet Alert 2 JavaScript-->
+    <script src="~/Content/js/proyectoVuelos/sweetalert2.js"></script>
+}
