@@ -12,20 +12,20 @@
                 <form action="@Url.Action("Guardar","Pasajero")">
                     <input type="hidden" class="form-control" name="id" value="@Model.Id">
                     <div class="form-group">
-                        <label>Nombre del pasajero:</label>
+                        <label>Nombre:</label>
                         <input class="form-control" name="nombre" value="@if (Model.Id != 0) { @Model.Nombre}" />
                     </div>
                     <div class="form-group">
-                        <label>Apellido Paterno del Pasajero:</label>
+                        <label>Apellido Paterno:</label>
                         <input class="form-control" name="apellidoPaterno" value="@if (Model.Id != 0) { @Model.ApellidoPaterno}" />
                     </div>
                     <div class="form-group">
-                        <label>Apellido Materno del Pasajero:</label>
+                        <label>Apellido Materno:</label>
                         <input class="form-control" name="apellidoMaterno" value="@if (Model.Id != 0) { @Model.ApellidoMaterno}" />
                     </div>
                     <div class="form-group">
-                        <label>Fecha de Nacimiento del Pasajero:</label>
-                        <input class="form-control" name="fechaNacimiento" value="@if (Model.Id != 0) { @Model.FechaNacimiento}" />
+                        <label>Fecha de Nacimiento:</label>
+                        <input type="date" class="form-control" name="fechaNacimiento" value="@if (Model.Id != 0) { @Model.FechaNacimiento}" />
                     </div>
 
                     <button class="btn btn-success" type="submit">Guardar</button>

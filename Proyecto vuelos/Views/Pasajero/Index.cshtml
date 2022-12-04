@@ -28,9 +28,9 @@
                             <tr>
                                 <th scope="col" style="width: 5%">id</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">ApellidoPaterno</th>
-                                <th scope="col">ApellidoMaterno</th>
-                                <th scope="col">FechaNacimiento</th>
+                                <th scope="col">Apellido Paterno</th>
+                                <th scope="col">Apellido Materno</th>
+                                <th scope="col">Fecha Nacimiento</th>
                                 <th scope="col" style="width: 5%">Acciones</th>
                             </tr>
                         </thead>
@@ -72,7 +72,11 @@
 {
     <script>
         $(document).ready(function () {
-            $('#tabla').DataTable();
+            $('#tabla').DataTable({
+                "oLanguage": {
+                    "sUrl": "//cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json"
+                }
+            });
         });
     </script>
 
