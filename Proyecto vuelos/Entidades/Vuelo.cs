@@ -1,8 +1,10 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Antlr.Runtime.Misc;
+using MySql.Data.MySqlClient;
 using Proyecto_vuelos.Base_de_datos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace Proyecto_vuelos.Entidades
@@ -16,6 +18,8 @@ namespace Proyecto_vuelos.Entidades
         public Avion Avion { get; set; }
         public int Capacidad { get; set; }
         public DateTime Fecha { get; set; }
+        public List<Pasajero> pasajeros;
+
 
         public static Vuelo GetById(int id)
         {
@@ -28,7 +32,7 @@ namespace Proyecto_vuelos.Entidades
                     string query = "SELECT vuelo.id, vuelo.origen, vuelo.destino, " +
                         "vuelo.capacidad, vuelo.fecha, avion.id AS idAvion, avion.nombre " +
                         "AS nombreAvion, avion.placa AS placaAvion FROM vuelo INNER JOIN avion " +
-                        "ON vuelo.idAvion = avion.id WHERE vuelo.id = @id;";
+                        "ON vuelo.idAvion = avion.id WHERE vuelo.id = @id;";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
                     cmd.Parameters.AddWithValue("@id", id);
@@ -49,6 +53,63 @@ namespace Proyecto_vuelos.Entidades
 
                         vuelo.Avion = avion;
 
+                    }
+                    dataReader.Close();
+                    conexion.CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return vuelo;
+        }
+
+        public static Vuelo GetPasajeros(int id)
+        {
+            Vuelo vuelo = new Vuelo();
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    string query = "SELECT vuelo.id, vuelo.origen, vuelo.destino, vuelo.capacidad, vuelo.fecha," +
+                        "\r\navion.id AS idAvion, avion.nombre AS nombreAvion, avion.placa AS placaAvion," +
+                        "\r\npasajero.id AS id_pasajero, pasajero.nombre AS nombre_pasajero, pasajero.apellidoPaterno as apellido_paterno_pasajero," +
+                        "\r\npasajero.apellidoMaterno AS apellido_materno_pasajero, pasajero.fechaNacimiento AS fecha_nacimiento_pasajero" +
+                        "\r\nFROM pasajero INNER JOIN boleto ON pasajero.id=boleto.id_pasajero \r\nINNER JOIN vuelo ON boleto.id_vuelo=vuelo.id" +
+                        "\r\nINNER JOIN avion ON avion.id=vuelo.idAvion\r\nWHERE vuelo.id=@id;";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                    vuelo.pasajeros = new List<Pasajero>();
+
+                    while (dataReader.Read())
+                    {
+                        vuelo.Id = int.Parse(dataReader["id"].ToString());
+                        vuelo.Origen = dataReader["origen"].ToString();
+                        vuelo.Destino = dataReader["destino"].ToString();
+                        vuelo.Capacidad = int.Parse(dataReader["capacidad"].ToString());
+                        vuelo.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
+
+                        Avion avion = new Avion();
+                        avion.Id = int.Parse(dataReader["idAvion"].ToString());
+                        avion.Nombre = dataReader["nombreAvion"].ToString();
+                        avion.Placa = dataReader["placaAvion"].ToString();
+
+                        vuelo.Avion = avion;
+
+                        Pasajero pasajero = new Pasajero();
+                        pasajero.Id = int.Parse(dataReader["id_pasajero"].ToString());
+                        pasajero.Nombre = dataReader["nombre_pasajero"].ToString();
+                        pasajero.ApellidoPaterno = dataReader["apellido_paterno_pasajero"].ToString();
+                        pasajero.ApellidoMaterno = dataReader["apellido_materno_pasajero"].ToString();
+                        pasajero.FechaNacimiento = dataReader["fecha_nacimiento_pasajero"].ToString();
+
+                        vuelo.pasajeros.Add(pasajero);
                     }
                     dataReader.Close();
                     conexion.CloseConnection();

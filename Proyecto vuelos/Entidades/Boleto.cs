@@ -144,23 +144,11 @@ namespace Proyecto_vuelos.Entidades
                 {
                     MySqlCommand cmd = conexion.connection.CreateCommand();
 
-                    if (boleto.Id == 0)
-                    {
-                        cmd.CommandText = "INSERT INTO boleto (fecha_creacion, id_vuelo, id_pasajero) VALUES (@fecha_creacion, @id_vuelo, @id_pasajero);";
+                    cmd.CommandText = "INSERT INTO boleto (fecha_creacion, id_vuelo, id_pasajero) VALUES (@fecha_creacion, @id_vuelo, @id_pasajero);";
 
-                        cmd.Parameters.AddWithValue("@fecha_creacion", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
-                        cmd.Parameters.AddWithValue("@id_vuelo", boleto.Vuelo.Id);
-                        cmd.Parameters.AddWithValue("@id_pasajero", boleto.Pasajero.Id);
-                    }
-                    else
-                    {
-                        cmd.CommandText = "UPDATE avion SET placa = @placa, nombre = @nombre WHERE id = @id;";
-
-                        cmd.Parameters.AddWithValue("@id", boleto.Id);
-                        cmd.Parameters.AddWithValue("@fecha_creacion", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
-                        cmd.Parameters.AddWithValue("@id_vuelo", boleto.Vuelo.Id);
-                        cmd.Parameters.AddWithValue("@id_pasajero", boleto.Pasajero.Id);
-                    }
+                    cmd.Parameters.AddWithValue("@fecha_creacion", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
+                    cmd.Parameters.AddWithValue("@id_vuelo", boleto.Vuelo.Id);
+                    cmd.Parameters.AddWithValue("@id_pasajero", boleto.Pasajero.Id);
 
                     result = cmd.ExecuteNonQuery() == 1;
                 }

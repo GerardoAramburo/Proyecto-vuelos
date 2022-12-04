@@ -263,6 +263,7 @@
     <Content Include="Views\Vuelo\Index.cshtml" />
     <Content Include="Views\Vuelo\Registro.cshtml" />
     <Content Include="Views\Boleto\Detalles.cshtml" />
+    <Content Include="Views\Pasajero\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

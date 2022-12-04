@@ -13,12 +13,20 @@ namespace Proyecto_vuelos.Controllers
         // GET: Vuelo
         public ActionResult Index()
         {
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Vuelo> vuelos = Vuelo.GetAll();
             return View(vuelos);
         }
 
         public ActionResult Registro(int id)
         {
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             dynamic model = new ExpandoObject();
             model.Vuelo = Vuelo.GetById(id);
             model.aviones = Avion.GetAll();
@@ -27,14 +35,33 @@ namespace Proyecto_vuelos.Controllers
 
         public ActionResult Guardar(int id, string origen, string destino, int idAvion, string capacidad, string fecha)
         {
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             Vuelo.Guardar(id, origen, destino, idAvion, capacidad, DateTime.Parse(fecha));
             return RedirectToAction("Index");
         }
 
         public ActionResult Eliminar(int id)
         {
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             Vuelo.Eliminar(id);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Pasajeros(int id)
+        {
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            List<Pasajero> pasajeros = Vuelo.GetPasajeros(id).pasajeros;
+
+            return View("/Views/Pasajero/Index.cshtml", pasajeros);
         }
     }
 }

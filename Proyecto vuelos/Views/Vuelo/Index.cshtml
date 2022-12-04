@@ -58,6 +58,9 @@
                                         @v.Fecha
                                     </td>
                                     <td>
+                                        <a href="@Url.Action("Pasajeros", "Vuelo", new { id = v.Id})">Ver pasajeros</a>
+                                    </td>
+                                    <td>
                                         <a href="@Url.Action("Registro","Vuelo", new { id = v.Id})" class="btn btn-primary btn-circle"><i class="fa fa-pencil"></i></a>
                                         <a onclick="eliminar(@v.Id)" class="btn btn-danger btn-circle"><i class="fa fa-trash-o"></i></a>
                                     </td>

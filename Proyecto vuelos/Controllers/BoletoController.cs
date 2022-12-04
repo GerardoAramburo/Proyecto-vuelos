@@ -26,6 +26,10 @@ namespace Proyecto_vuelos.Controllers
         // GET: Boleto/Details/5
         public ActionResult Detalles(int id)
         {
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             Boleto boleto = Boleto.GetById(id);
             return View(boleto);
         }
@@ -56,23 +60,26 @@ namespace Proyecto_vuelos.Controllers
         [HttpPost]
         public ActionResult Guardar(FormCollection collection)
         {
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             try
             {
-
                 Boleto boleto = new Boleto();
                 boleto.Id = 0;
                 boleto.Pasajero = Pasajero.GetById(int.Parse(collection["pasajero_id"]));
-
-                boleto.Vuelo = Vuelo.GetById(int.Parse(collection["vuelo_id"]));
+                int vueloid = int.Parse(collection["vuelo_id"]);
+                boleto.Vuelo = Vuelo.GetById(vueloid);
 
                 Boleto.Guardar(boleto);
                 
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                throw ex;
             }
         }
 
