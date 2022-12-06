@@ -133,7 +133,7 @@ namespace Proyecto_vuelos.Entidades
                     string query = "SELECT vuelo.id, vuelo.origen, vuelo.destino, " +
                         "vuelo.capacidad, vuelo.fecha, avion.id AS idAvion, avion.nombre " +
                         "AS nombreAvion, avion.placa AS placaAvion FROM vuelo INNER JOIN avion " +
-                        "ON vuelo.idAvion = avion.id;";
+                        "ON vuelo.idAvion = avion.id;";
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
 
                     MySqlDataReader dataReader = command.ExecuteReader();
